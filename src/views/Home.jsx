@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getListData } from '../service/api'
+import { TextField, FormControlLabel, FormGroup, Checkbox } from '@mui/material';
 
 const Home = () => {
   const [jobList, setJobList] = useState([])
@@ -25,7 +26,13 @@ const Home = () => {
     </div>
     <div className='h-full w-full bg-gray-200 flex justify-center'>
       <div className='container p-5'>
-        <input />
+        <div className='grid grid-cols-3 gap-5'>
+          <TextField size='small' label="Outlined" variant="outlined"/>
+          <TextField size='small' label="Outlined" variant="outlined"/>
+          <FormGroup>
+            <FormControlLabel control={<Checkbox defaultChecked />} label="Full Time Only" />
+          </FormGroup>
+        </div>
         <div className='rounded shadow bg-white mt-5'>
           <h1 className='text-3xl p-10 font-bold'>Job List</h1>
             { jobList.map(data =>
@@ -36,7 +43,7 @@ const Home = () => {
                 </div>
                 <div className='col-span-1 text-right'>
                   <p className='text-gray-500'>{data.location}</p>
-                  <p className='text-gray-500'>{data.created_at}</p>
+                  <p className='text-gray-400'>{data.created_at}</p>
                 </div>
               </div> 
             )}
